@@ -1,0 +1,2929 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher 💙🩷</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Tahoma,Arial,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 50% 10%,#438fc0,#174c78 45%,#071b31);
+}
+
+button,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ==================================================
+   SPLASH
+================================================== */
+
+#splash{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:#06182a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.splash-inner{
+    width:min(90%,420px);
+    text-align:center;
+}
+
+.logo-screen{
+    opacity:0;
+    transform:scale(.75);
+    animation:logoIn 1.2s ease forwards;
+}
+
+.logo-screen svg{
+    width:min(55vw,210px);
+    height:auto;
+}
+
+@keyframes logoIn{
+    0%{
+        opacity:0;
+        transform:scale(.75);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.creator{
+    opacity:0;
+    transform:translateY(15px);
+    transition:.8s ease;
+}
+
+.creator.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.creator-small{
+    color:#9edcff;
+    font-size:11px;
+    letter-spacing:4px;
+}
+
+.creator-name{
+    margin-top:8px;
+    font-size:21px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* ==================================================
+   LOADER
+================================================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#06182a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.loader-box{
+    width:min(92vw,500px);
+    text-align:center;
+}
+
+.loader-title{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.loading-area{
+    position:relative;
+    width:100%;
+    height:60px;
+    display:flex;
+    align-items:center;
+}
+
+.loading-track{
+    width:100%;
+    height:24px;
+    border-radius:30px;
+    background:#09243a;
+    border:1px solid #347db0;
+    box-shadow:inset 0 4px 8px #000;
+    overflow:hidden;
+}
+
+.loading-fill{
+    height:100%;
+    width:0;
+    border-radius:30px;
+    background:linear-gradient(
+        90deg,
+        #155d91,
+        #328fc4,
+        #79d7ff
+    );
+}
+
+.chocolate{
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:39px;
+    line-height:1;
+    z-index:5;
+    user-select:none;
+    touch-action:none;
+    filter:drop-shadow(0 4px 5px #000);
+}
+
+.loader-hint{
+    margin-top:17px;
+    color:#b9dff3;
+    font-size:13px;
+}
+
+/* ==================================================
+   APP
+================================================== */
+
+#app{
+    min-height:100vh;
+    position:relative;
+}
+
+.screen{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px 15px 100px;
+}
+
+.card{
+    width:min(94%,680px);
+    min-height:500px;
+    position:relative;
+
+    background:rgba(10,44,72,.72);
+    border:1px solid rgba(145,220,255,.24);
+    border-radius:30px;
+
+    padding:28px 20px;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.10);
+
+    text-align:center;
+}
+
+h1{
+    font-size:clamp(22px,6vw,31px);
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:clamp(18px,4.8vw,24px);
+    line-height:2;
+    margin-bottom:20px;
+}
+
+.description{
+    color:#c9e8f8;
+    font-size:14px;
+    line-height:2.1;
+    margin-bottom:22px;
+}
+
+/* ==================================================
+   STITCH
+================================================== */
+
+.stitch-wrap{
+    height:220px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    margin-bottom:8px;
+}
+
+.stitch{
+    width:190px;
+    height:185px;
+    position:relative;
+    transform-origin:center bottom;
+    animation:stitchFloat 3s ease-in-out infinite;
+}
+
+@keyframes stitchFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+/* ears */
+
+.stitch-ear{
+    position:absolute;
+    top:3px;
+    width:76px;
+    height:88px;
+    background:#2788bd;
+    border:5px solid #075078;
+    z-index:1;
+}
+
+.stitch-ear.left{
+    left:-5px;
+    border-radius:70% 25% 70% 30%;
+    transform:rotate(-27deg);
+}
+
+.stitch-ear.right{
+    right:-5px;
+    border-radius:25% 70% 30% 70%;
+    transform:rotate(27deg);
+}
+
+.stitch-ear::after{
+    content:"";
+    position:absolute;
+    width:44px;
+    height:62px;
+    top:13px;
+    background:#f29ab7;
+    opacity:.9;
+}
+
+.stitch-ear.left::after{
+    left:17px;
+    border-radius:70% 30% 70% 30%;
+    transform:rotate(-5deg);
+}
+
+.stitch-ear.right::after{
+    right:17px;
+    border-radius:30% 70% 30% 70%;
+    transform:rotate(5deg);
+}
+
+/* head */
+
+.stitch-head{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+    width:170px;
+    height:165px;
+    border-radius:47% 47% 44% 44%;
+
+    background:
+        radial-gradient(
+            circle at 38% 25%,
+            #65c9f1,
+            #238bc0 48%,
+            #12618f 100%
+        );
+
+    border:5px solid #075078;
+
+    box-shadow:
+        inset 0 8px 15px rgba(255,255,255,.18),
+        0 12px 22px rgba(0,0,0,.35);
+
+    z-index:2;
+}
+
+/* eyes */
+
+.stitch-eye{
+    position:absolute;
+    top:52px;
+    width:38px;
+    height:48px;
+    border-radius:50%;
+    background:#050505;
+    overflow:hidden;
+    transition:
+        transform .28s ease,
+        top .28s ease;
+}
+
+.stitch-eye::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:13px;
+    border-radius:50%;
+    background:#fff;
+    left:7px;
+    top:7px;
+}
+
+.stitch-eye.left{
+    left:34px;
+}
+
+.stitch-eye.right{
+    right:34px;
+}
+
+/* muzzle */
+
+.stitch-muzzle{
+    position:absolute;
+    left:50%;
+    top:89px;
+    transform:translateX(-50%);
+    width:92px;
+    height:62px;
+    border-radius:50%;
+    background:#dff7ff;
+}
+
+/* nose */
+
+.stitch-nose{
+    position:absolute;
+    left:50%;
+    top:98px;
+    transform:translateX(-50%);
+    width:31px;
+    height:23px;
+    border-radius:50% 50% 45% 45%;
+    background:#101010;
+    z-index:5;
+}
+
+/* mouth */
+
+.stitch-mouth{
+    position:absolute;
+    left:50%;
+    top:124px;
+    transform:translateX(-50%);
+    width:46px;
+    height:24px;
+    border-bottom:5px solid #12344a;
+    border-radius:0 0 50% 50%;
+    z-index:5;
+    transition:.25s ease;
+}
+
+/* reactions */
+
+.stitch.happy .stitch-eye{
+    transform:scaleY(.78);
+}
+
+.stitch.happy .stitch-mouth{
+    width:50px;
+    height:27px;
+}
+
+.stitch.sad .stitch-eye{
+    transform:scaleY(.65);
+}
+
+.stitch.sad .stitch-mouth{
+    top:133px;
+    width:43px;
+    height:16px;
+    border-bottom:0;
+    border-top:5px solid #12344a;
+    border-radius:50% 50% 0 0;
+}
+
+.stitch.cry .stitch-eye{
+    transform:scaleY(.82);
+}
+
+.stitch.cry .stitch-eye::before{
+    content:"";
+    position:absolute;
+    width:7px;
+    height:16px;
+    border-radius:50%;
+    background:#69d6ff;
+    left:4px;
+    top:34px;
+    animation:tear .7s ease-in-out infinite;
+}
+
+.stitch.cry .stitch-eye.right::before{
+    left:auto;
+    right:4px;
+}
+
+@keyframes tear{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.7;
+    }
+
+    50%{
+        transform:translateY(7px);
+        opacity:1;
+    }
+}
+
+.stitch.surprised .stitch-eye{
+    transform:scale(1.18);
+}
+
+.stitch.surprised .stitch-mouth{
+    top:117px;
+    width:29px;
+    height:33px;
+    border:0;
+    border-radius:50%;
+    background:#12344a;
+}
+
+.stitch.thinking .stitch-eye.left{
+    top:48px;
+    transform:translate(-4px,-2px);
+}
+
+.stitch.thinking .stitch-eye.right{
+    top:48px;
+    transform:translate(-5px,-2px);
+}
+
+.stitch.thinking .stitch-mouth{
+    width:32px;
+    height:5px;
+    border-bottom:5px solid #12344a;
+    border-radius:50%;
+}
+
+.stitch.shy .stitch-eye{
+    transform:scaleY(.42);
+}
+
+.stitch.shy .stitch-mouth{
+    width:40px;
+    height:23px;
+}
+
+.stitch.laugh .stitch-eye{
+    transform:scaleY(.18);
+}
+
+.stitch.laugh .stitch-mouth{
+    width:53px;
+    height:30px;
+}
+
+.stitch.wink .stitch-eye.left{
+    transform:scaleY(.13);
+}
+
+.stitch.wink .stitch-eye.right{
+    transform:scale(1.05);
+}
+
+.stitch.wink .stitch-mouth{
+    width:49px;
+}
+
+.stitch.dance{
+    animation:stitchDance .38s ease-in-out infinite alternate;
+}
+
+@keyframes stitchDance{
+    from{
+        transform:rotate(-8deg) translateY(0);
+    }
+
+    to{
+        transform:rotate(8deg) translateY(-9px);
+    }
+}
+
+/* ==================================================
+   SLEEP
+================================================== */
+
+.sleep-card{
+    position:relative;
+    min-height:560px;
+}
+
+.sleep-card #content{
+    position:relative;
+    z-index:4;
+    padding-top:12px;
+}
+
+.sleep-card .stitch-wrap{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:210px;
+    height:210px;
+    margin:0;
+    transform:translate(-50%,-50%);
+    z-index:3;
+    pointer-events:none;
+}
+
+.sleep-card .stitch{
+    animation:none;
+}
+
+.stitch.sleeping{
+    animation:sleepLay 1.15s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes sleepLay{
+    0%{
+        transform:rotate(0deg) translateY(0);
+    }
+
+    65%{
+        transform:rotate(82deg) translateY(8px);
+    }
+
+    100%{
+        transform:rotate(90deg) translateY(24px);
+    }
+}
+
+.stitch.sleeping .stitch-eye{
+    top:68px;
+    height:7px;
+    transform:none!important;
+}
+
+.stitch.sleeping .stitch-eye::after{
+    display:none;
+}
+
+.stitch.sleeping::before{
+    content:"💨";
+    position:absolute;
+    right:-30px;
+    top:45px;
+    font-size:24px;
+    opacity:0;
+    animation:sleepPuff 2.2s ease-in-out infinite;
+    z-index:10;
+}
+
+@keyframes sleepPuff{
+    0%{
+        opacity:0;
+        transform:translate(0,8px) scale(.7);
+    }
+
+    25%{
+        opacity:.9;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(24px,-20px) scale(1.15);
+    }
+}
+
+.stitch.sleeping::after{
+    content:"Zzz";
+    position:absolute;
+    right:-8px;
+    top:8px;
+    color:#bcecff;
+    font-size:22px;
+    font-weight:bold;
+    opacity:0;
+    animation:snore 1.8s ease-in-out infinite;
+}
+
+@keyframes snore{
+    0%{
+        opacity:0;
+        transform:translate(0,12px) scale(.75);
+    }
+
+    25%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(22px,-28px) scale(1.2);
+    }
+}
+
+/* ==================================================
+   INPUT
+================================================== */
+
+textarea{
+    width:100%;
+    min-height:130px;
+    resize:none;
+    padding:15px;
+    border-radius:18px;
+    border:1px solid rgba(145,220,255,.18);
+    background:rgba(3,18,31,.55);
+    color:#fff;
+    outline:none;
+    font-size:16px;
+    line-height:1.8;
+}
+
+textarea:focus{
+    border-color:#55bdf0;
+}
+
+/* ==================================================
+   BUTTONS
+================================================== */
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+    margin-top:18px;
+}
+
+.btn{
+    min-height:48px;
+    padding:12px 22px;
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #319dd2,
+            #14618e
+        );
+
+    color:#fff;
+    font-size:15px;
+
+    box-shadow:0 7px 18px rgba(0,0,0,.28);
+
+    transition:
+        transform .2s cubic-bezier(.16,1,.3,1),
+        opacity .2s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn.secondary{
+    background:#163b58;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.btn.danger{
+    background:linear-gradient(
+        145deg,
+        #e4779b,
+        #a9476d
+    );
+}
+
+.back{
+    margin-top:18px;
+    background:transparent;
+    color:#aee4fa;
+    font-size:14px;
+    text-decoration:underline;
+}
+
+/* ==================================================
+   ESCAPE
+================================================== */
+
+.escape-layer{
+    position:absolute;
+    inset:0;
+    z-index:500;
+    pointer-events:none;
+}
+
+.escape-message{
+    position:absolute;
+    top:22px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    font-size:19px;
+    line-height:1.8;
+}
+
+.escape-button{
+    position:absolute!important;
+    pointer-events:auto;
+    z-index:600;
+    white-space:nowrap;
+
+    transition:
+        left .20s cubic-bezier(.16,1,.3,1),
+        top .20s cubic-bezier(.16,1,.3,1),
+        transform .20s cubic-bezier(.16,1,.3,1);
+}
+
+.escape-back{
+    pointer-events:auto;
+}
+
+/* ==================================================
+   BLUE / PINK RAIN
+================================================== */
+
+.food{
+    position:fixed;
+    top:-70px;
+    z-index:8000;
+    pointer-events:none;
+    font-size:34px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-80px) rotate(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(110vh) rotate(540deg);
+        opacity:1;
+    }
+}
+
+/* ==================================================
+   BOTTOM LOOP
+================================================== */
+
+.food-strip{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:70px;
+    z-index:7000;
+    overflow:hidden;
+    background:rgba(5,24,40,.97);
+    border-top:1px solid rgba(115,210,255,.22);
+    box-shadow:
+        0 -10px 30px rgba(0,0,0,.35);
+}
+
+.food-loop{
+    height:100%;
+    display:flex;
+    width:max-content;
+    align-items:center;
+    animation:
+        continuousLoop 4.8s linear infinite;
+}
+
+.food-group{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    width:420px;
+    flex-shrink:0;
+    padding:0 28px;
+}
+
+.food-item{
+    display:block;
+    font-size:34px;
+    animation:
+        foodBounce .7s ease-in-out infinite alternate;
+}
+
+.food-item:nth-child(2){
+    animation-delay:.15s;
+}
+
+.food-item:nth-child(3){
+    animation-delay:.30s;
+}
+
+@keyframes foodBounce{
+    from{
+        transform:translateY(5px);
+    }
+
+    to{
+        transform:translateY(-8px);
+    }
+}
+
+@keyframes continuousLoop{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-420px);
+    }
+}
+
+/* ==================================================
+   TRANSITIONS
+================================================== */
+
+#app.app-enter{
+    animation:appEnter .62s cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes appEnter{
+    0%{
+        opacity:0;
+        transform:translateY(14px) scale(.985);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.content-transition{
+    animation:
+        contentEnter .38s cubic-bezier(.16,1,.3,1)
+        both;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+}
+
+@keyframes contentEnter{
+    0%{
+        opacity:0;
+        transform:
+            translateY(10px)
+            scale(.995);
+        filter:blur(1px);
+    }
+
+    60%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter:blur(0);
+    }
+}
+
+.content-exit{
+    animation:
+        contentExit .16s cubic-bezier(.4,0,1,1)
+        both;
+
+    pointer-events:none;
+}
+
+@keyframes contentExit{
+    from{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter:blur(0);
+    }
+
+    to{
+        opacity:0;
+        transform:
+            translateY(-5px)
+            scale(.997);
+        filter:blur(1px);
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    #app.app-enter,
+    .content-transition,
+    .content-exit{
+        animation:none!important;
+    }
+}
+
+/* ==================================================
+   FINAL
+================================================== */
+
+.final-title{
+    font-size:25px;
+    line-height:1.8;
+    margin-bottom:14px;
+}
+
+.final-text{
+    color:#d8f0fb;
+    font-size:15px;
+    line-height:2.1;
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:500px){
+
+    .screen{
+        padding:15px 10px 95px;
+    }
+
+    .card{
+        width:96%;
+        padding:22px 14px;
+        border-radius:25px;
+    }
+
+    .stitch-wrap{
+        height:205px;
+    }
+
+    .stitch{
+        transform:scale(.92);
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .food-strip{
+        height:64px;
+    }
+
+    .food-group{
+        width:320px;
+        padding:0 20px;
+    }
+
+    .food-item{
+        font-size:29px;
+    }
+
+    .sleep-card{
+        min-height:560px;
+    }
+
+    .sleep-card .stitch-wrap{
+        width:200px;
+        height:200px;
+    }
+
+    @keyframes continuousLoop{
+        from{
+            transform:translateX(0);
+        }
+
+        to{
+            transform:translateX(-320px);
+        }
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ==================================================
+     SPLASH
+================================================== -->
+
+<div id="splash">
+
+    <div class="splash-inner">
+
+        <div class="logo-screen" id="logoScreen">
+
+            <svg viewBox="0 0 300 240"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <ellipse
+                    cx="150"
+                    cy="105"
+                    rx="88"
+                    ry="78"
+                    fill="#238bc0"
+                    stroke="#72d8ff"
+                    stroke-width="7"/>
+
+                <path
+                    d="M78 85
+                       C38 48 27 79 52 111
+                       C65 127 72 138 91 145"
+                    fill="#238bc0"
+                    stroke="#075078"
+                    stroke-width="7"
+                    stroke-linecap="round"/>
+
+                <path
+                    d="M222 85
+                       C262 48 273 79 248 111
+                       C235 127 228 138 209 145"
+                    fill="#238bc0"
+                    stroke="#075078"
+                    stroke-width="7"
+                    stroke-linecap="round"/>
+
+                <ellipse
+                    cx="117"
+                    cy="100"
+                    rx="15"
+                    ry="22"
+                    fill="#050505"/>
+
+                <ellipse
+                    cx="183"
+                    cy="100"
+                    rx="15"
+                    ry="22"
+                    fill="#050505"/>
+
+                <circle
+                    cx="113"
+                    cy="93"
+                    r="5"
+                    fill="#fff"/>
+
+                <circle
+                    cx="179"
+                    cy="93"
+                    r="5"
+                    fill="#fff"/>
+
+                <ellipse
+                    cx="150"
+                    cy="137"
+                    rx="43"
+                    ry="28"
+                    fill="#dff7ff"/>
+
+                <ellipse
+                    cx="150"
+                    cy="132"
+                    rx="15"
+                    ry="10"
+                    fill="#111"/>
+
+                <path
+                    d="M130 153 Q150 168 170 153"
+                    fill="none"
+                    stroke="#12344a"
+                    stroke-width="6"
+                    stroke-linecap="round"/>
+
+                <text
+                    x="150"
+                    y="220"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-size="22"
+                    font-weight="bold"
+                    letter-spacing="3">
+                    AMIR ARSALAN
+                </text>
+
+            </svg>
+
+        </div>
+
+        <div class="creator" id="creator">
+
+            <div class="creator-small">
+                CREATED BY
+            </div>
+
+            <div class="creator-name">
+                AMIR ARSALAN
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     LOADER
+================================================== -->
+
+<div id="loader" class="hidden">
+
+    <div class="loader-box">
+
+        <div class="loader-title">
+            آماده‌سازی برای تیچر... 💙🩷
+        </div>
+
+        <div class="loading-area" id="loadingArea">
+
+            <div class="loading-track">
+
+                <div
+                    class="loading-fill"
+                    id="loadingFill">
+                </div>
+
+            </div>
+
+            <div
+                class="chocolate"
+                id="chocolate">
+
+                🍩
+
+            </div>
+
+        </div>
+
+        <div class="loader-hint">
+            دونات رو بگیر و تا انتهای نوار بکش 🍩💙
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     APP
+================================================== -->
+
+<div id="app" class="hidden">
+
+    <main class="screen">
+
+        <section class="card" id="card">
+
+            <div class="stitch-wrap">
+
+                <div class="stitch happy" id="stitch">
+
+                    <div class="stitch-ear left"></div>
+                    <div class="stitch-ear right"></div>
+
+                    <div class="stitch-head">
+
+                        <div class="stitch-eye left"></div>
+                        <div class="stitch-eye right"></div>
+
+                        <div class="stitch-muzzle"></div>
+
+                        <div class="stitch-nose"></div>
+
+                        <div class="stitch-mouth"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="content"></div>
+
+        </section>
+
+    </main>
+
+    <div class="food-strip">
+
+        <div class="food-loop">
+
+            <div class="food-group">
+                <span class="food-item">💙</span>
+                <span class="food-item">🍩</span>
+                <span class="food-item">🩷</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🍩</span>
+                <span class="food-item">💙</span>
+                <span class="food-item">🩷</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🩷</span>
+                <span class="food-item">🍩</span>
+                <span class="food-item">💙</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">💙</span>
+                <span class="food-item">🩷</span>
+                <span class="food-item">🍩</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🍩</span>
+                <span class="food-item">💙</span>
+                <span class="food-item">🩷</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🩷</span>
+                <span class="food-item">🍩</span>
+                <span class="food-item">💙</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">💙</span>
+                <span class="food-item">🍩</span>
+                <span class="food-item">🩷</span>
+            </div>
+
+            <div class="food-group">
+                <span class="food-item">🍩</span>
+                <span class="food-item">🩷</span>
+                <span class="food-item">💙</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const splash=document.getElementById("splash");
+const logoScreen=document.getElementById("logoScreen");
+const creator=document.getElementById("creator");
+const loader=document.getElementById("loader");
+const app=document.getElementById("app");
+const card=document.getElementById("card");
+const content=document.getElementById("content");
+const stitch=document.getElementById("stitch");
+const loadingArea=document.getElementById("loadingArea");
+const loadingFill=document.getElementById("loadingFill");
+const chocolate=document.getElementById("chocolate");
+
+/* ==================================================
+   STATE
+================================================== */
+
+const state={
+
+    current:"welcome",
+
+    answers:{
+        q1:"",
+        q1Explain:"",
+        q2:"",
+        q3:"",
+        q4:""
+    },
+
+    escapeCount:0,
+
+    escapeActive:false,
+
+    escapeProximityEnabled:false,
+
+    escapeMoveHandler:null,
+    escapeLayer:null,
+    escapeButton:null,
+    navigationTimer:null,
+    transitionTimer:null,
+    blinkTimer:null
+};
+
+/* ==================================================
+   SPLASH
+================================================== */
+
+setTimeout(()=>{
+
+    logoScreen.style.transition="opacity .8s ease";
+    logoScreen.style.opacity="0";
+
+    setTimeout(()=>{
+
+        logoScreen.classList.add("hidden");
+        creator.classList.add("show");
+
+    },850);
+
+},2300);
+
+setTimeout(()=>{
+
+    creator.style.opacity="0";
+
+    setTimeout(()=>{
+
+        splash.remove();
+        loader.classList.remove("hidden");
+
+    },750);
+
+},4300);
+
+/* ==================================================
+   LOADER
+================================================== */
+
+let dragging=false;
+let loaded=false;
+
+function moveChocolate(clientX){
+
+    const rect=
+        loadingArea.getBoundingClientRect();
+
+    let x=clientX-rect.left;
+
+    x=Math.max(
+        0,
+        Math.min(rect.width,x)
+    );
+
+    const percent=
+        (x/rect.width)*100;
+
+    loadingFill.style.width=
+        percent+"%";
+
+    chocolate.style.left=
+        x+"px";
+
+    if(percent>=98)
+        finishLoading();
+}
+
+chocolate.addEventListener(
+    "pointerdown",
+    e=>{
+
+        dragging=true;
+
+        chocolate.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+);
+
+chocolate.addEventListener(
+    "pointermove",
+    e=>{
+
+        if(dragging)
+            moveChocolate(e.clientX);
+
+    }
+);
+
+chocolate.addEventListener(
+    "pointerup",
+    ()=>{
+        dragging=false;
+    }
+);
+
+chocolate.addEventListener(
+    "pointercancel",
+    ()=>{
+        dragging=false;
+    }
+);
+
+function finishLoading(){
+
+    if(loaded)
+        return;
+
+    loaded=true;
+
+    loadingFill.style.width="100%";
+    chocolate.style.left="100%";
+
+    setTimeout(()=>{
+
+        foodRain();
+
+        loader.style.transition=
+            "opacity .7s ease";
+
+        loader.style.opacity="0";
+
+        setTimeout(()=>{
+
+            loader.remove();
+
+            app.classList.remove("hidden");
+            app.classList.add("app-enter");
+
+            showWelcome();
+
+            setTimeout(()=>{
+                app.classList.remove(
+                    "app-enter"
+                );
+            },700);
+
+        },700);
+
+    },500);
+}
+
+/* ==================================================
+   STITCH EXPRESSION
+================================================== */
+
+function expression(type){
+
+    stitch.className=
+        "stitch "+type;
+}
+
+/* ==================================================
+   CLEAN
+================================================== */
+
+function clearQuestion(){
+
+    if(state.navigationTimer){
+
+        clearTimeout(
+            state.navigationTimer
+        );
+
+        state.navigationTimer=null;
+    }
+
+    if(state.transitionTimer){
+
+        clearTimeout(
+            state.transitionTimer
+        );
+
+        state.transitionTimer=null;
+    }
+
+    content.classList.remove(
+        "content-exit",
+        "content-transition"
+    );
+
+    if(state.blinkTimer){
+
+        clearTimeout(
+            state.blinkTimer
+        );
+
+        state.blinkTimer=null;
+    }
+
+    removeEscape();
+
+    content.innerHTML="";
+
+    state.escapeButton=null;
+    state.escapeActive=false;
+    state.escapeCount=0;
+    state.escapeProximityEnabled=false;
+}
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+function animateContent(){
+
+    content.classList.remove(
+        "content-transition"
+    );
+
+    void content.offsetWidth;
+
+    content.classList.add(
+        "content-transition"
+    );
+
+    clearTimeout(
+        state.transitionTimer
+    );
+
+    state.transitionTimer=
+        setTimeout(()=>{
+
+            content.classList.remove(
+                "content-transition"
+            );
+
+            state.transitionTimer=null;
+
+        },420);
+}
+
+function smoothContentExit(){
+
+    content.classList.remove(
+        "content-transition"
+    );
+
+    content.classList.add(
+        "content-exit"
+    );
+
+    void content.offsetWidth;
+}
+
+function smoothNavigate(fn){
+
+    if(state.navigationTimer)
+        clearTimeout(
+            state.navigationTimer
+        );
+
+    smoothContentExit();
+
+    state.navigationTimer=
+        setTimeout(()=>{
+
+            state.navigationTimer=null;
+
+            content.classList.remove(
+                "content-exit"
+            );
+
+            fn();
+
+        },160);
+}
+
+/* ==================================================
+   VALIDATION
+================================================== */
+
+function validAnswer(text){
+
+    text=text
+        .replace(/[ي]/g,"ی")
+        .replace(/[ك]/g,"ک")
+        .replace(/\s+/g," ")
+        .trim();
+
+    const words=text
+        .split(" ")
+        .filter(Boolean);
+
+    if(words.length<2)
+        return false;
+
+    const letters=
+        (text.match(/[A-Za-zآ-ی]/g)||[])
+        .length;
+
+    if(letters<2)
+        return false;
+
+    if(/(.)\1{4,}/u.test(text))
+        return false;
+
+    const bad=[
+        "asdf",
+        "qwer",
+        "zxcv",
+        "hjkl",
+        "poiuy",
+        "lkjh",
+        "test",
+        "abc abc",
+        "hello hello"
+    ];
+
+    const lower=text.toLowerCase();
+
+    if(
+        bad.some(
+            x=>lower.includes(x)
+        )
+    )
+        return false;
+
+    if(/^123/.test(text))
+        return false;
+
+    const unique=new Set(
+        words.map(
+            x=>x.toLowerCase()
+        )
+    );
+
+    if(
+        words.length>=2 &&
+        unique.size===1
+    )
+        return false;
+
+    return true;
+}
+
+/* ==================================================
+   POSITIVE
+================================================== */
+
+function positive(){
+
+    expression("happy");
+    foodRain();
+}
+
+/* ==================================================
+   SAVE
+================================================== */
+
+function saveAnswer(key,value){
+
+    state.answers[key]=
+        value.trim();
+}
+
+/* ==================================================
+   WELCOME
+================================================== */
+
+function showWelcome(){
+
+    clearQuestion();
+
+    state.current="welcome";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("happy");
+
+    content.innerHTML=`
+
+        <h1>
+            خوش اومدین تیچر! 💙🩷
+        </h1>
+
+        <p class="description">
+
+            یه گفت‌وگوی کوچولو فقط برای شما آماده کردیم. 🍩💙
+
+            <br>
+
+            چند تا سؤال کوتاه داریم و امیدواریم جواب دادن
+            بهشون باعث بشه خیالمون راحت‌تر بشه. 🤍
+
+            <br>
+
+            آماده‌اید؟
+
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="startBtn">
+
+                شروع کنیم 💙
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    document
+        .getElementById("startBtn")
+        .onclick=showQ1;
+}
+
+/* ==================================================
+   Q1
+================================================== */
+
+function showQ1(){
+
+    clearQuestion();
+
+    state.current="q1";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("thinking");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            تیچر، من یه حسی دارم که شاید توی کلاس از دستم ناراحت شدین؛
+            چون از اون موقع استوری ناراحتی میزارین، درست حس کردم؟ 🥲
+
+            <br><br>
+
+            اگه آره، میشه بگین دقیقاً چی باعث شد ناراحت بشین؟
+
+        </div>
+
+        <textarea
+            id="answer"
+            placeholder="جوابتون رو اینجا بنویسید...">
+        </textarea>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="submit">
+
+                ثبت جواب 💙
+
+            </button>
+
+            <button
+                class="btn secondary"
+                id="negative">
+
+                نمی‌خوام جواب بدم
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    const answer=
+        document.getElementById("answer");
+
+    document
+        .getElementById("submit")
+        .onclick=()=>{
+
+            if(!validAnswer(answer.value)){
+
+                expression("surprised");
+
+                answer.animate(
+                    [
+                        {transform:"translateX(-6px)"},
+                        {transform:"translateX(6px)"},
+                        {transform:"translateX(-4px)"},
+                        {transform:"translateX(4px)"},
+                        {transform:"translateX(0)"}
+                    ],
+                    350
+                );
+
+                return;
+            }
+
+            saveAnswer(
+                "q1",
+                answer.value
+            );
+
+            expression("shy");
+            positive();
+
+            smoothNavigate(showQ2);
+        };
+
+    document
+        .getElementById("negative")
+        .onclick=()=>{
+
+            state.escapeCount++;
+
+            const negative=
+                document.getElementById("negative");
+
+            if(state.escapeCount===1){
+
+                expression("surprised");
+
+                negative.textContent=
+                    "اِ... مطمئنید؟ 👀💙";
+
+            }
+
+            else if(state.escapeCount===2){
+
+                expression("cry");
+
+                negative.textContent=
+                    "فقط یه جواب کوچولو... 🥺🩷";
+
+            }
+
+            else{
+
+                activateEscape(
+                    "نه نه... هنوز باید یه جواب کوچولو بدید! 💙🍩",
+                    "نه نه! هنوز جواب نمی‌دم 😭",
+                    showQ1
+                );
+            }
+        };
+}
+
+/* ==================================================
+   Q2
+================================================== */
+
+function showQ2(){
+
+    clearQuestion();
+
+    state.current="q2";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("happy");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            چون از اون روز حس کردم پست‌های ناراحت‌کننده بیشتری می‌ذارین
+            و آخر کلاس هم یه جوری صحبت کردین که من فکر کردم شاید
+            از چیزی که من گفتم یا انجام دادم ناراحت شدین.
+
+            <br><br>
+
+            اگه چیزی گفتم یا کاری کردم که ناراحتتون کرده،
+            واقعاً ببخشید ✨ اصلاً از قصد نبوده و اگه ناخواسته
+            باعث ناراحتی‌تون شدم، واقعاً منظور بدی نداشتم.
+
+            <br><br>
+
+            الان دیگه ناراحتیتون برطرف شده و حالتون بهتره؟ 🌸
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="yes">
+
+                آره، بهترم 💙
+
+            </button>
+
+            <button
+                class="btn danger"
+                id="no">
+
+                نه، هنوز نه
+
+            </button>
+
+            <button
+                class="btn secondary"
+                id="explain">
+
+                می‌خوام توضیح بدم ✍️
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    let noCount=0;
+
+    document
+        .getElementById("yes")
+        .onclick=()=>{
+
+            saveAnswer(
+                "q2",
+                "آره، بهترم"
+            );
+
+            positive();
+
+            smoothNavigate(showQ3);
+        };
+
+    document
+        .getElementById("no")
+        .onclick=()=>{
+
+            noCount++;
+
+            const no=
+                document.getElementById("no");
+
+            if(noCount===1){
+
+                expression("surprised");
+
+                no.textContent=
+                    "مطمئنید؟ 👀";
+
+            }
+
+            else if(noCount===2){
+
+                expression("cry");
+
+                no.textContent=
+                    "هنوز ناراحتید؟ 🥺🩷";
+
+            }
+
+            else{
+
+                saveAnswer(
+                    "q2",
+                    "نه، هنوز نه"
+                );
+
+                activateEscape(
+                    "امیدواریم زودتر حالت خوب بشه 💙🍩",
+                    "هنوز خوب نیستم 😭",
+                    showQ2
+                );
+            }
+        };
+
+    document
+        .getElementById("explain")
+        .onclick=showQ2Explain;
+}
+
+/* ==================================================
+   Q2 EXPLAIN
+================================================== */
+
+function showQ2Explain(){
+
+    clearQuestion();
+
+    state.current="q2Explain";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("thinking");
+
+    content.innerHTML=`
+
+        <div class="question">
+            اگه دوست دارین توضیح بیشتری بدین، اینجا برامون بنویسین ✍️💙
+        </div>
+
+        <textarea
+            id="answer"
+            placeholder="اینجا توضیحتون رو بنویسید...">
+        </textarea>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="saveExplain">
+
+                ثبت توضیح 💙
+
+            </button>
+
+        </div>
+
+        <button
+            class="back"
+            id="back">
+
+            ← برگشت
+
+        </button>
+    `;
+
+    animateContent();
+
+    document
+        .getElementById("saveExplain")
+        .onclick=()=>{
+
+            const answer=
+                document.getElementById("answer");
+
+            if(!validAnswer(answer.value)){
+
+                expression("surprised");
+
+                answer.animate(
+                    [
+                        {transform:"translateX(-5px)"},
+                        {transform:"translateX(5px)"},
+                        {transform:"translateX(0)"}
+                    ],
+                    280
+                );
+
+                return;
+            }
+
+            saveAnswer(
+                "q2",
+                "می‌خوام توضیح بدم"
+            );
+
+            saveAnswer(
+                "q2Explain",
+                answer.value
+            );
+
+            positive();
+
+            smoothNavigate(showQ3);
+        };
+
+    document
+        .getElementById("back")
+        .onclick=showQ2;
+}
+
+/* ==================================================
+   Q3
+================================================== */
+
+function showQ3(){
+
+    clearQuestion();
+
+    state.current="q3";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("happy");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            حالا که امیدوارم همه‌چی اوکی شده،
+            میشه بگین خودتون دوست دارین ترم بعد هم تیچر ما باشین یا نه؟ 😅
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="sure">
+
+                آره، دوست دارم 💙
+
+            </button>
+
+            <button
+                class="btn danger"
+                id="unsure">
+
+                نه، دوست ندارم
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    let count=0;
+
+    document
+        .getElementById("sure")
+        .onclick=()=>{
+
+            saveAnswer(
+                "q3",
+                "آره، دوست دارم"
+            );
+
+            positive();
+
+            smoothNavigate(showQ4);
+        };
+
+    document
+        .getElementById("unsure")
+        .onclick=()=>{
+
+            count++;
+
+            const btn=
+                document.getElementById("unsure");
+
+            if(count===1){
+
+                expression("surprised");
+
+                btn.textContent=
+                    "اِ... چرا؟ 👀";
+
+            }
+
+            else if(count===2){
+
+                expression("sad");
+
+                btn.textContent=
+                    "هنوز مطمئن نیستید؟ 🥺";
+
+            }
+
+            else{
+
+                saveAnswer(
+                    "q3",
+                    "نه، دوست ندارم"
+                );
+
+                activateEscape(
+                    "استیچ هنوز امیدوار مونده! 💙🍩",
+                    "نه نه! 😭",
+                    showQ3
+                );
+            }
+        };
+}
+
+/* ==================================================
+   Q4
+================================================== */
+
+function showQ4(){
+
+    clearQuestion();
+
+    state.current="q4";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("thinking");
+
+    content.innerHTML=`
+
+        <div class="question">
+
+            و یه سؤال دیگه؛ اگه از نظر شما توی رفتارم چیزی هست
+            که بهتره تغییرش بدم یا بهترش کنم، ممنون میشم بهم بگین.
+
+            <br><br>
+
+            دوست دارم اگه جایی رفتاری دارم که ممکنه خوب نباشه،
+            بدونم و اصلاحش کنم 🤍
+
+        </div>
+
+        <textarea
+            id="answer"
+            placeholder="پیشنهاد یا نظرتون رو اینجا بنویسید...">
+        </textarea>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="submit">
+
+                ثبت پیشنهاد 💙
+
+            </button>
+
+            <button
+                class="btn secondary"
+                id="negative">
+
+                ترجیح می‌دم چیزی نگم
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    const answer=
+        document.getElementById("answer");
+
+    document
+        .getElementById("submit")
+        .onclick=()=>{
+
+            if(!validAnswer(answer.value)){
+
+                expression("surprised");
+
+                answer.animate(
+                    [
+                        {transform:"translateX(-6px)"},
+                        {transform:"translateX(6px)"},
+                        {transform:"translateX(-4px)"},
+                        {transform:"translateX(4px)"},
+                        {transform:"translateX(0)"}
+                    ],
+                    350
+                );
+
+                return;
+            }
+
+            saveAnswer(
+                "q4",
+                answer.value
+            );
+
+            positive();
+
+            smoothNavigate(showFinal);
+        };
+
+    let count=0;
+
+    document
+        .getElementById("negative")
+        .onclick=()=>{
+
+            count++;
+
+            const negative=
+                document.getElementById("negative");
+
+            if(count===1){
+
+                expression("surprised");
+
+                negative.textContent=
+                    "حتی یه پیشنهاد کوچولو؟ 👀💙";
+
+            }
+
+            else if(count===2){
+
+                expression("cry");
+
+                negative.textContent=
+                    "واقعاً هرچی راحتین... 🥺🩷";
+
+            }
+
+            else{
+
+                activateEscape(
+                    "استیچ فقط می‌خواد کمک کنه 💙🍩",
+                    "نمی‌گم! 😭",
+                    showQ4
+                );
+            }
+        };
+}
+
+/* ==================================================
+   PRIVACY MESSAGE
+================================================== */
+
+function showPrivacyMessage(){
+
+    clearQuestion();
+
+    state.current="privacy";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("shy");
+
+    content.innerHTML=`
+
+        <div class="final-title">
+            یه چیز دیگه هم هست... 💙
+        </div>
+
+        <div class="final-text">
+
+            چون شاید دوست نداشته باشین جواب این سؤال‌ها
+            برای من معلوم بشه، این صفحه هیچ جوابی رو به
+            سرور یا شخص دیگه‌ای ارسال نمی‌کنه.
+
+            <br><br>
+
+            جواب‌ها فقط داخل همین صفحه نگه داشته می‌شن
+            و بعد از بستن یا تازه‌کردن صفحه باقی نمی‌مونن.
+
+            <br><br>
+
+            هرجوری خودتون راحت‌تر هستین همون‌طوری جواب بدین،
+            یا اگرم نمی‌خواین کلاً جواب ندین.
+
+            <br><br>
+
+            فقط می‌خواستم خیالم راحت باشه که حرفی نزده باشم
+            که ناراحتتون کرده باشم 🤍
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="finish">
+
+                متوجه شدم 💙
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    document
+        .getElementById("finish")
+        .onclick=showFinal;
+}
+
+/* ==================================================
+   ESCAPE
+================================================== */
+
+function activateEscape(
+    message,
+    buttonText,
+    backFunction
+){
+
+    removeEscape();
+
+    const buttons=
+        content.querySelector(".buttons");
+
+    if(buttons){
+
+        buttons
+            .querySelectorAll("button")
+            .forEach(button=>{
+                button.remove();
+            });
+    }
+
+    const textarea=
+        content.querySelector("textarea");
+
+    if(textarea)
+        textarea.remove();
+
+    const layer=
+        document.createElement("div");
+
+    layer.className=
+        "escape-layer";
+
+    const msg=
+        document.createElement("div");
+
+    msg.className=
+        "escape-message";
+
+    msg.textContent=
+        message;
+
+    const escape=
+        document.createElement("button");
+
+    escape.type="button";
+
+    escape.className=
+        "btn danger escape-button";
+
+    escape.textContent=
+        buttonText;
+
+    escape.style.left="50%";
+    escape.style.top="58%";
+
+    escape.style.transform=
+        "translateX(-50%)";
+
+    layer.appendChild(msg);
+    layer.appendChild(escape);
+
+    card.appendChild(layer);
+
+    const back=
+        document.createElement("button");
+
+    back.type="button";
+
+    back.className="back escape-back";
+
+    back.textContent="← برگشت";
+
+    back.style.position="absolute";
+    back.style.bottom="18px";
+    back.style.left="50%";
+
+    back.style.transform=
+        "translateX(-50%)";
+
+    back.style.zIndex="700";
+    back.style.pointerEvents="auto";
+
+    layer.appendChild(back);
+
+    state.escapeLayer=layer;
+    state.escapeButton=escape;
+    state.escapeActive=true;
+
+    state.escapeProximityEnabled=false;
+
+    state.escapeMoveHandler=
+        function(e){
+
+            if(
+                !state.escapeActive ||
+                !state.escapeProximityEnabled
+            )
+                return;
+
+            const rect=
+                escape.getBoundingClientRect();
+
+            const centerX=
+                rect.left+
+                rect.width/2;
+
+            const centerY=
+                rect.top+
+                rect.height/2;
+
+            const distance=
+                Math.hypot(
+                    e.clientX-centerX,
+                    e.clientY-centerY
+                );
+
+            if(distance<125){
+
+                expression("surprised");
+
+                moveEscapeButton();
+            }
+        };
+
+    document.addEventListener(
+        "pointermove",
+        state.escapeMoveHandler,
+        {passive:true}
+    );
+
+    escape.addEventListener(
+        "click",
+        e=>{
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            expression("surprised");
+
+            moveEscapeButton();
+
+            state.escapeProximityEnabled=true;
+        }
+    );
+
+    escape.addEventListener(
+        "pointerdown",
+        e=>{
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            if(!state.escapeProximityEnabled){
+
+                expression("surprised");
+
+                moveEscapeButton();
+
+                state.escapeProximityEnabled=true;
+            }
+        }
+    );
+
+    back.addEventListener(
+        "click",
+        e=>{
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            removeEscape();
+
+            backFunction();
+        }
+    );
+}
+
+/* ==================================================
+   MOVE ESCAPE
+================================================== */
+
+function moveEscapeButton(){
+
+    if(
+        !state.escapeButton ||
+        !state.escapeLayer
+    )
+        return;
+
+    const layer=
+        state.escapeLayer;
+
+    const button=
+        state.escapeButton;
+
+    const layerRect=
+        layer.getBoundingClientRect();
+
+    const buttonRect=
+        button.getBoundingClientRect();
+
+    const padding=15;
+    const bottomReserved=78;
+
+    const maxX=Math.max(
+        padding,
+        layerRect.width-
+        buttonRect.width-
+        padding
+    );
+
+    const maxY=Math.max(
+        padding,
+        layerRect.height-
+        buttonRect.height-
+        bottomReserved
+    );
+
+    const x=
+        padding+
+        Math.random()*
+        Math.max(
+            1,
+            maxX-padding
+        );
+
+    const y=
+        padding+
+        Math.random()*
+        Math.max(
+            1,
+            maxY-padding
+        );
+
+    button.style.left=
+        x+"px";
+
+    button.style.top=
+        y+"px";
+
+    button.style.transform=
+        "none";
+}
+
+/* ==================================================
+   REMOVE ESCAPE
+================================================== */
+
+function removeEscape(){
+
+    state.escapeActive=false;
+    state.escapeProximityEnabled=false;
+
+    if(state.escapeMoveHandler){
+
+        document.removeEventListener(
+            "pointermove",
+            state.escapeMoveHandler
+        );
+
+        state.escapeMoveHandler=null;
+    }
+
+    card
+        .querySelectorAll(".escape-layer")
+        .forEach(layer=>{
+            layer.remove();
+        });
+
+    state.escapeLayer=null;
+    state.escapeButton=null;
+}
+
+/* ==================================================
+   BLUE / PINK RAIN
+================================================== */
+
+function foodRain(){
+
+    const foods=[
+        "🍩",
+        "💙",
+        "🩷",
+        "🧁",
+        "✨"
+    ];
+
+    for(let i=0;i<24;i++){
+
+        setTimeout(()=>{
+
+            const item=
+                document.createElement("div");
+
+            item.className="food";
+
+            item.textContent=
+                foods[
+                    Math.floor(
+                        Math.random()*
+                        foods.length
+                    )
+                ];
+
+            item.style.left=
+                Math.random()*100+"vw";
+
+            item.style.animationDuration=
+                (2+Math.random()*2)+"s";
+
+            document.body.appendChild(item);
+
+            setTimeout(
+                ()=>item.remove(),
+                4500
+            );
+
+        },i*45);
+    }
+}
+
+/* ==================================================
+   FINAL
+================================================== */
+
+function showFinal(){
+
+    clearQuestion();
+
+    state.current="final";
+
+    card.classList.remove(
+        "sleep-card"
+    );
+
+    stitch.classList.remove(
+        "sleeping"
+    );
+
+    expression("laugh");
+
+    content.innerHTML=`
+
+        <div class="final-title">
+
+            ممنون که تا اینجا باهام همراه بودین! 💙🩷
+
+        </div>
+
+        <div class="final-text">
+
+            امیدوارم این چند سؤال باعث شده باشه
+            حداقل یه کم خیالم راحت‌تر بشه.
+
+            <br><br>
+
+            هدفم از این برنامه فقط این بود که بدونم
+            آیا جایی ناخواسته باعث ناراحتی‌تون شدم یا نه.
+
+            <br><br>
+
+            ممنون که وقت گذاشتین و جواب دادین. 🍩💙
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="end">
+
+                پایان 💙
+
+            </button>
+
+        </div>
+    `;
+
+    animateContent();
+
+    stitch.classList.add("dance");
+
+    function blink(){
+
+        if(state.current!=="final")
+            return;
+
+        stitch.classList.remove("wink");
+
+        void stitch.offsetWidth;
+
+        stitch.classList.add("wink");
+
+        setTimeout(()=>{
+
+            stitch.classList.remove("wink");
+
+        },350);
+
+        state.blinkTimer=
+            setTimeout(
+                blink,
+                1500+
+                Math.random()*2200
+            );
+    }
+
+    blink();
+
+    document
+        .getElementById("end")
+        .onclick=showSleep;
+}
+
+/* ==================================================
+   SLEEP / FINISHED
+================================================== */
+
+function showSleep(){
+
+    clearQuestion();
+
+    state.current="sleep";
+
+    card.classList.add(
+        "sleep-card"
+    );
+
+    expression("happy");
+
+    stitch.classList.remove(
+        "dance",
+        "wink",
+        "laugh",
+        "happy"
+    );
+
+    void stitch.offsetWidth;
+
+    stitch.classList.add(
+        "sleeping"
+    );
+
+    content.innerHTML=`
+
+        <div class="final-title">
+
+            استیچ کوچولومون هم خوابش برد... 💙💤
+
+        </div>
+
+        <div class="final-text">
+
+            جواب‌ها فقط در همین صفحه نگه داشته شدند و
+            به هیچ سروری ارسال نشدند. ✅
+
+            <br><br>
+
+            می‌تونید با خیال راحت صفحه رو ببندید. 💙🩷
+
+        </div>
+
+    `;
+
+    animateContent();
+}
+
+</script>
+
+</body>
+</html>
